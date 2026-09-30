@@ -39,7 +39,7 @@ if(!root){
 // CSS
 
 const BASE_URL =
-"https://cdn.jsdelivr.net/gh/Kisako-git/zhizhi_phone@70a90b7/";
+"https://cdn.jsdelivr.net/gh/Kisako-git/zhizhi_phone/index.js";
 
 
 const css=document.createElement("link");
