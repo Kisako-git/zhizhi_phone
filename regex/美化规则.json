@@ -1,0 +1,121 @@
+[
+  {
+    "id": "b8e3b458-b260-4397-a148-8e11d9f30d98",
+    "scriptName": "手机 01｜发出消息气泡",
+    "findRegex": "/<条目(?=\\s|>)(?=[^<>]*\\s方向\\s*=\\s*[\"']发出[\"'])(?:(?=[^<>]*\\s发送者\\s*=\\s*[\"'](([^\"'<>])[^\"'<>]*)[\"'])|(?=[^<>]*>))(?:(?=[^<>]*\\s时间\\s*=\\s*[\"']([^\"'<>]*)[\"'])|(?=[^<>]*>))(?:(?=[^<>]*\\s头像\\s*=\\s*[\"']([^\"'<>]*)[\"'])|(?=[^<>]*>))[^<>]*>\\s*((?:(?!<\\/条目>|<手机>|<\\/手机>)[\\s\\S])*?)\\s*<\\/条目>\\s*(?=(?:(?!<手机>|<\\/手机>)[\\s\\S])*?<\\/手机>)/g",
+    "replaceString": "<div class=\"ap-item ap-message ap-out\"><span class=\"ap-avatar\" style=\"background-image: url('$4');\">$2</span><div class=\"ap-msg-stack\"><div class=\"ap-msg-meta\"><span>$1</span><span>$3</span></div><div class=\"ap-bubble\">$5</div></div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "4a45ee2c-8547-416c-857c-e193b9a61214",
+    "scriptName": "手机 02｜收到消息气泡",
+    "findRegex": "/<条目(?=\\s|>)(?=[^<>]*\\s方向\\s*=\\s*[\"']收到[\"'])(?:(?=[^<>]*\\s发送者\\s*=\\s*[\"'](([^\"'<>])[^\"'<>]*)[\"'])|(?=[^<>]*>))(?:(?=[^<>]*\\s时间\\s*=\\s*[\"']([^\"'<>]*)[\"'])|(?=[^<>]*>))(?:(?=[^<>]*\\s头像\\s*=\\s*[\"']([^\"'<>]*)[\"'])|(?=[^<>]*>))[^<>]*>\\s*((?:(?!<\\/条目>|<手机>|<\\/手机>)[\\s\\S])*?)\\s*<\\/条目>\\s*(?=(?:(?!<手机>|<\\/手机>)[\\s\\S])*?<\\/手机>)/g",
+    "replaceString": "<div class=\"ap-item ap-message ap-in\"><span class=\"ap-avatar\" style=\"background-image: url('$4');\">$2</span><div class=\"ap-msg-stack\"><div class=\"ap-msg-meta\"><span>$1</span><span>$3</span></div><div class=\"ap-bubble\">$5</div></div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "e575117d-4658-47e8-996c-e732a635e7e9",
+    "scriptName": "手机 03｜兼容姓名冒号消息",
+    "findRegex": "/<条目>\\s*(?:(\\d{1,2}:\\d{2})\\s*[｜|]\\s*)?((?!\\d{1,2}:)([^<>：:\\r\\n|｜])[^<>：:\\r\\n|｜]{0,11}?)\\s*[：:]\\s*((?:(?!<\\/条目>|<手机>|<\\/手机>)[\\s\\S])*?)\\s*<\\/条目>\\s*(?=(?:(?!<手机>|<\\/手机>)[\\s\\S])*?<\\/手机>)/g",
+    "replaceString": "<div class=\"ap-item ap-legacy\" data-sender=\"$2\"><span class=\"ap-avatar\">$3</span><div class=\"ap-msg-stack\"><div class=\"ap-msg-meta\"><span>$2</span><span>$1</span></div><div class=\"ap-bubble\">$4</div></div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "5539194b-ebea-48f3-b250-3fd5b071aea2",
+    "scriptName": "手机 04｜内容卡片与元信息",
+    "findRegex": "/<条目(?=\\s|>)(?:(?=[^<>]*\\s标题\\s*=\\s*[\"']([^\"'<>]*)[\"'])|(?=[^<>]*>))(?:(?=[^<>]*\\s副文\\s*=\\s*[\"']([^\"'<>]*)[\"'])|(?=[^<>]*>))(?:(?=[^<>]*\\s标记\\s*=\\s*[\"']([^\"'<>]*)[\"'])|(?=[^<>]*>))(?:(?=[^<>]*\\s状态\\s*=\\s*[\"']([^\"'<>]*)[\"'])|(?=[^<>]*>))[^<>]*>\\s*((?:(?!<\\/条目>|<手机>|<\\/手机>)[\\s\\S])*?)\\s*<\\/条目>\\s*(?=(?:(?!<手机>|<\\/手机>)[\\s\\S])*?<\\/手机>)/g",
+    "replaceString": "<div class=\"ap-item\" data-state=\"$4\"><span class=\"ap-card-cover\" aria-hidden=\"true\"></span><div class=\"ap-card-main\"><div class=\"ap-entry-heading\">$1</div><div class=\"ap-entry-body\">$5</div><div class=\"ap-entry-meta\"><span class=\"ap-entry-sub\">$2</span><span class=\"ap-entry-tag\">$3</span></div></div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "3eb6e694-d5da-41bc-9108-1f9df574a2e1",
+    "scriptName": "手机 05｜栏目与对话分组",
+    "findRegex": "/<栏目(?=\\s|>)(?:(?=[^<>]*\\s类型\\s*=\\s*[\"']([^\"'<>]*)[\"'])|(?=[^<>]*>))(?=[^<>]*\\s名称\\s*=\\s*[\"']([^\"'<>]+)[\"'])[^<>]*>\\s*((?:(?!<\\/栏目>|<手机>|<\\/手机>)[\\s\\S])*?)\\s*<\\/栏目>\\s*(?=(?:(?!<手机>|<\\/手机>)[\\s\\S])*?<\\/手机>)/g",
+    "replaceString": "<details class=\"ap-section\" data-kind=\"$1\" data-section=\"$2\" open><summary>$2</summary><div class=\"ap-items\">$3</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "36885523-99d3-487a-b04d-d4dcc4682331",
+    "scriptName": "手机 06｜桌面与应用对应",
+    "findRegex": "/<应用(?=\\s|>)(?:(?=[^<>]*\\s未读\\s*=\\s*[\"'](\\d+)[\"'])|(?=[^<>]*>))[^<>]*>\\s*([^<>]+?)\\s*<\\/应用>\\s*(?=(?:(?!<手机>|<\\/手机>|<桌面>|<\\/桌面>)[\\s\\S])*?<\\/桌面>(?:(?!<手机>|<\\/手机>)[\\s\\S])*?<APP(?=\\s|>)(?=[^<>]*\\s名称\\s*=\\s*[\"']\\2[\"'])(?:(?=[^<>]*\\s界面\\s*=\\s*[\"']([^\"'<>]*)[\"'])|(?=[^<>]*>))[^<>]*>\\s*((?:(?!<\\/APP>|<手机>|<\\/手机>)[\\s\\S])*?)\\s*<\\/APP>(?=(?:(?!<手机>|<\\/手机>)[\\s\\S])*?<\\/手机>))/g",
+    "replaceString": "<details class=\"ap-app\" data-app=\"$2\" data-style=\"$3\"><summary class=\"ap-launch\"><span class=\"ap-shortcut\"><span class=\"ap-icon\"><span class=\"ap-badge\" data-unread=\"$1\">$1</span></span><span class=\"ap-name\">$2</span></span><span class=\"ap-back\">‹ 返回</span><span class=\"ap-app-title\">$2</span></summary><div class=\"ap-content\" tabindex=\"0\" role=\"region\" aria-label=\"$2内容\"><div class=\"ap-brandbar\"><span class=\"ap-brand-mark\" aria-hidden=\"true\"></span><span class=\"ap-brand-copy\"><strong class=\"ap-brand-name\">$2</strong><span class=\"ap-brand-caption\"></span></span></div><div class=\"ap-section-stack\">$4</div></div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9c70bf55-ce47-4c7f-a3a9-74e233f8abae",
+    "scriptName": "手机 07｜纯胶囊气泡全局样式",
+    "findRegex": "/<手机>\\s*<角色>\\s*([^<>]*?)\\s*<\\/角色>\\s*<时间>\\s*([^<>]*?)\\s*<\\/时间>\\s*<日期>\\s*([^<>]*?)\\s*<\\/日期>\\s*<电量>\\s*([^<>]*?)\\s*<\\/电量>\\s*<网络>\\s*([^<>]*?)\\s*<\\/网络>\\s*<壁纸>\\s*([^<>]*?)\\s*<\\/壁纸>\\s*<桌面>\\s*((?:(?!<\\/桌面>|<手机>|<\\/手机>)[\\s\\S])*?)\\s*<\\/桌面>\\s*(?:<APP(?=\\s|>)[^<>]*>(?:(?!<\\/APP>|<手机>|<\\/手机>)[\\s\\S])*?<\\/APP>\\s*)*<\\/手机>/g",
+    "replaceString": "<style>.ap-fold{display:block;max-width:100%;margin:10px auto;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}.ap-fold>summary{display:flex!important;align-items:center;justify-content:center;gap:6px;width:100%;margin:0 auto 10px!important;padding:6px 12px!important;border:0!important;background:transparent!important;box-shadow:none!important;color:#b59a83!important;font-size:13px!important;font-weight:600!important;line-height:1.6!important;text-align:center!important;list-style:none!important;cursor:pointer;user-select:none;transition:color .2s ease}.ap-fold>summary::-webkit-details-marker{display:none}.ap-fold>summary::marker{content:\"\"}.ap-fold>summary::before{content:\"✦\";font-size:11px;color:#d1bfae;display:inline-block!important}.ap-fold[open]>summary::before{content:\"✧\";color:#b59a83}.ap-fold>summary::after{display:none!important}.ap-phone{--ap-height:580px;box-sizing:border-box;position:relative;width:min(100%,360px);margin:14px auto 6px;padding:0;border:1px solid rgba(238,224,196,.8);border-radius:22px;background-color:#fefbf4;background-image:radial-gradient(rgba(181,154,131,.15) 2px,transparent 2.5px),radial-gradient(rgba(181,154,131,.15) 2px,transparent 2.5px);background-size:38px 38px;background-position:0 0,19px 19px;box-shadow:0 12px 35px rgba(168,142,117,.15),inset 0 0 0 1px rgba(255,255,255,.6);color:#5c4738;font:14px/1.6 system-ui,-apple-system,sans-serif;text-align:left;overflow:hidden;isolation:isolate}.ap-phone *{box-sizing:border-box}.ap-phone summary{list-style:none;cursor:pointer;user-select:none}.ap-phone summary::-webkit-details-marker{display:none}.ap-phone summary::marker{content:\"\"}.ap-status{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:36px;padding:4px 17px 2px;background:rgba(254,251,244,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(238,224,196,.8);color:#b59a83;font-size:11px;white-space:nowrap}.ap-status-time{font-weight:650}.ap-status-right{display:flex;align-items:center;gap:8px;min-width:0}.ap-network{max-width:125px;overflow:hidden;text-overflow:ellipsis}.ap-battery{padding:0 4px;border:1px solid #b59a83;border-radius:4px;font-size:10px}.ap-stage{position:relative;display:flex;flex-direction:column;height:calc(var(--ap-height) - 36px - 23px);min-height:0;overflow:hidden;background:transparent}.ap-intro{flex-shrink:0;padding:24px 20px 22px;text-align:center}.ap-date{color:#b59a83;font-size:12px;overflow-wrap:anywhere}.ap-clock{margin:2px 0;font-size:46px;font-weight:300;line-height:1.3;letter-spacing:1px;font-variant-numeric:tabular-nums;color:#5c4738}.ap-owner{color:#b59a83;font-size:12px;overflow-wrap:anywhere}.ap-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:start;justify-items:center;flex-shrink:0;gap:22px 9px;padding:0 15px}.ap-grid>br{display:none!important}.ap-app{width:100%;min-width:0;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent;box-shadow:none!important}.ap-app{--app-bg:#fefbf4;--app-header:rgba(254,251,244,.88);--app-card:rgba(255,255,255,.7);--app-ink:#5c4738;--app-muted:#b59a83;--app-accent:#d1bfae;--app-line:rgba(238,224,196,.8);--app-caption:\"内容记录\";--app-mark:\"✦\"}.ap-launch{display:block;margin:0!important;padding:0!important;border:0!important;background:transparent;color:inherit;line-height:1.4;text-align:center}.ap-launch::before,.ap-launch::after{display:none!important}.ap-shortcut{display:flex;flex-direction:column;align-items:center;gap:7px;width:100%}.ap-icon{position:relative;display:flex;align-items:center;justify-content:center;width:54px;height:54px;border:1px solid rgba(255,255,255,.8);border-radius:16px;background:#f5e6cd;box-shadow:0 4px 9px rgba(168,142,117,.15);color:#b59a83}.ap-icon::before{content:\"✦\";font-size:27px;line-height:1;font-weight:500}.ap-name{display:-webkit-box;width:100%;max-height:30px;color:#5c4738;font-size:11px;line-height:1.35;text-align:center;overflow-wrap:anywhere;overflow:hidden;-webkit-line-clamp:2;-webkit-box-orient:vertical}.ap-badge{position:absolute;top:-5px;right:-6px;z-index:1;display:flex;align-items:center;justify-content:center;min-width:18px;max-width:43px;height:18px;padding:0 4px;border:2px solid #fefbf4;border-radius:12px;background:#d87076;color:#fff;font-size:9px;font-weight:650;line-height:1;overflow:hidden}.ap-badge[data-unread=\"0\"],.ap-badge[data-unread=\"\"]{display:none}.ap-back,.ap-app-title{display:none}.ap-wallpaper{position:relative;flex-shrink:0;margin:18px 18px 16px;padding:6px 12px;border:1px solid rgba(238,224,196,.8);border-radius:14px;background:rgba(255,255,255,.5);color:#b59a83;font-size:11px;line-height:1.6;overflow-wrap:anywhere}.ap-wallpaper-label{display:block;margin-bottom:2px;color:#d1bfae;font-size:10px;letter-spacing:2px}.ap-wallpaper-text{display:-webkit-box;overflow:hidden;-webkit-line-clamp:2;-webkit-box-orient:vertical}.ap-app[open]{position:absolute;inset:0;z-index:5;display:block;height:100%;overflow:hidden;background:var(--app-bg);color:var(--app-ink)}.ap-app[open],.ap-app[open] *{font-family:system-ui,-apple-system,sans-serif!important}.ap-app[open]>.ap-launch{position:relative;z-index:2;display:flex;align-items:center;gap:12px;height:54px;min-height:54px;padding:0 17px!important;background:var(--app-header)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--app-line)!important;text-align:left}.ap-app[open] .ap-shortcut{display:none}.ap-app[open] .ap-back{display:block;position:absolute;left:14px;top:18px;flex-shrink:0;color:var(--app-muted);font-size:12px}.ap-app[open] .ap-app-title{display:block;width:100%;padding:0 54px;color:var(--app-ink);font-size:15px;font-weight:650;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ap-content{position:absolute;top:54px;right:0;bottom:0;left:0;padding:14px 13px 22px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:rgba(181,154,131,.3) transparent;background:var(--app-bg)}.ap-content::-webkit-scrollbar{width:6px}.ap-content::-webkit-scrollbar-track{background:transparent}.ap-content::-webkit-scrollbar-thumb{border-radius:10px;background:rgba(181,154,131,.3)}.ap-content q{display:inline!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;color:inherit!important;font:inherit!important}.ap-section{margin:0 0 11px!important;padding:0!important;border:1px solid var(--app-line)!important;border-radius:14px!important;background:rgba(255,255,255,.6)!important;box-shadow:none!important;overflow:visible}.ap-section>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0!important;padding:9px 13px!important;background:transparent;color:var(--app-muted);font-size:12px;font-weight:650;line-height:1.5;overflow-wrap:anywhere}.ap-section>summary::before{display:none!important}.ap-section>summary::after{content:\"＋\";display:block!important;flex-shrink:0;color:var(--app-accent);font-size:13px}.ap-section[open]>summary::after{content:\"−\"}.ap-items{padding:0 13px 10px}.ap-items>br,.ap-section-stack>br{display:none!important}.ap-item{position:relative;display:flex;align-items:flex-start;gap:10px;margin:0 0 9px;padding:12px;border:1px solid var(--app-line);border-radius:13px;background:var(--app-card);color:var(--app-ink);white-space:pre-wrap;overflow:hidden;line-height:1.6;font-size:12px;box-shadow:0 2px 6px rgba(181,154,131,.03)}.ap-stage:has(.ap-app[open]) .ap-intro,.ap-stage:has(.ap-app[open]) .ap-wallpaper,.ap-stage:has(.ap-app[open]) .ap-app:not([open]){visibility:hidden}.ap-homebar{height:23px;padding-top:10px;background:rgba(254,251,244,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(238,224,196,.8)}.ap-homebar::after{content:\"\";display:block;width:94px;height:4px;margin:0 auto;border-radius:3px;background:#b59a83}.ap-brandbar{display:flex;align-items:center;gap:10px;margin:14px 13px 16px;padding:13px 14px;border:1px solid var(--app-line);border-radius:15px;background:var(--app-card);box-shadow:0 2px 8px rgba(181,154,131,.05)}.ap-brand-mark{display:flex;align-items:center;justify-content:center;flex:0 0 34px;width:34px;height:34px;border-radius:11px;background:#f5e6cd;color:#b59a83;font-size:20px;line-height:1}.ap-brand-mark::before{content:var(--app-mark)}.ap-brand-copy{display:flex;flex-direction:column;min-width:0;gap:3px}.ap-brand-name{color:var(--app-ink);font-size:14px;font-weight:700;line-height:1.35}.ap-brand-caption{color:var(--app-muted);font-size:10px;line-height:1.4;letter-spacing:.5px}.ap-brand-caption::before{content:var(--app-caption)}.ap-section-stack{padding:0 12px}.ap-card-cover{display:none;flex-shrink:0;position:relative;overflow:hidden}.ap-card-main{min-width:0;flex:1}.ap-entry-heading{margin:0 0 5px;color:var(--app-ink);font-size:13px;font-weight:650;line-height:1.5;overflow-wrap:anywhere}.ap-entry-heading:empty,.ap-entry-sub:empty,.ap-entry-tag:empty{display:none}.ap-entry-body{color:var(--app-ink);font-size:12px;line-height:1.7!important;white-space:pre-wrap;overflow-wrap:anywhere}.ap-entry-meta{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:4px 8px;margin-top:7px;color:var(--app-muted);font-size:10px;line-height:1.4}.ap-entry-meta:has(>.ap-entry-sub:empty):has(>.ap-entry-tag:empty){display:none}.ap-entry-sub{min-width:0;overflow-wrap:anywhere}.ap-entry-tag{flex-shrink:0;color:var(--app-accent);font-size:11px;font-weight:600}.ap-message{display:flex;align-items:flex-start;gap:10px;min-width:0;margin:18px 0;padding:0;border:0!important;border-radius:0;background:transparent;overflow:visible;box-shadow:none}.ap-avatar{display:flex;align-items:center;justify-content:center;flex:0 0 42px;width:42px;height:42px;padding:0;border:2px solid #fff;border-radius:50%;background-color:#f5e6cd;background-size:cover;background-position:center;box-shadow:0 3px 8px rgba(181,154,131,.15);color:transparent;font-size:14px;font-weight:700;line-height:1.3;text-align:center;overflow:hidden;overflow-wrap:anywhere}.ap-avatar[style*=\"url('')\"],.ap-avatar:not([style*=\"url\"]){background-image:none!important;color:#b59a83!important}.ap-msg-stack{display:flex;flex-direction:column;align-items:flex-start;min-width:0;max-width:calc(100% - 52px)}.ap-msg-meta{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:0 4px 6px;color:#b59a83;font-size:11px;font-weight:600;line-height:1.4}.ap-msg-meta>span:empty{display:none}.ap-bubble{position:relative;max-width:100%;padding:11px 17px;border:1px solid #f0e1a8;border-radius:18px;background:#ffffff;box-shadow:0 3px 10px rgba(181,154,131,.08);color:#5c4738;font-size:14px;line-height:1.6!important;white-space:pre-wrap;overflow-wrap:anywhere}.ap-bubble img{max-width:100%;height:auto;border-radius:12px;display:block;margin:6px 0;box-shadow:0 2px 6px rgba(0,0,0,.05)}.ap-out{flex-direction:row-reverse}.ap-out .ap-msg-stack{align-items:flex-end}.ap-out .ap-msg-meta{justify-content:flex-end}.ap-out .ap-bubble{background:#fff7d4;border-radius:18px;border:1px solid #f0e1a8;box-shadow:0 3px 10px rgba(181,154,131,.08);color:#5c4738}.ap-legacy{display:block;padding:11px 12px;box-shadow:none}.ap-legacy>.ap-avatar{display:none}.ap-legacy>.ap-msg-stack{max-width:100%}.ap-legacy .ap-bubble{padding:0;border:0;background:transparent;box-shadow:none;font-size:12px}:is(.ap-app[data-app=\"微信\"],.ap-app[data-app=\"QQ\"],.ap-app[data-app=\"短信\"],.ap-app[data-style=\"聊天\"]) .ap-legacy{display:flex;gap:10px;padding:0;border:0!important;background:transparent;overflow:visible}:is(.ap-app[data-app=\"微信\"],.ap-app[data-app=\"QQ\"],.ap-app[data-app=\"短信\"],.ap-app[data-style=\"聊天\"]) .ap-legacy>.ap-avatar{display:flex}:is(.ap-app[data-app=\"微信\"],.ap-app[data-app=\"QQ\"],.ap-app[data-app=\"短信\"],.ap-app[data-style=\"聊天\"]) .ap-legacy>.ap-msg-stack{max-width:calc(100% - 52px)}:is(.ap-app[data-app=\"微信\"],.ap-app[data-app=\"QQ\"],.ap-app[data-app=\"短信\"],.ap-app[data-style=\"聊天\"]) .ap-legacy .ap-bubble{padding:11px 17px;border:1px solid #f0e1a8;border-radius:18px;background:#ffffff;box-shadow:0 3px 10px rgba(181,154,131,.08);font-size:14px}:is(.ap-app[data-app=\"微信\"],.ap-app[data-app=\"QQ\"],.ap-app[data-app=\"短信\"],.ap-app[data-style=\"聊天\"]) .ap-legacy[data-sender=\"我\"],:is(.ap-app[data-app=\"微信\"],.ap-app[data-app=\"QQ\"],.ap-app[data-app=\"短信\"],.ap-app[data-style=\"聊天\"]) .ap-legacy[data-sender=\"自己\"]{flex-direction:row-reverse}:is(.ap-app[data-app=\"微信\"],.ap-app[data-app=\"QQ\"],.ap-app[data-app=\"短信\"],.ap-app[data-style=\"聊天\"]) .ap-legacy[data-sender=\"我\"] .ap-msg-stack,:is(.ap-app[data-app=\"微信\"],.ap-app[data-app=\"QQ\"],.ap-app[data-app=\"短信\"],.ap-app[data-style=\"聊天\"]) .ap-legacy[data-sender=\"自己\"] .ap-msg-stack{align-items:flex-end}:is(.ap-app[data-app=\"微信\"],.ap-app[data-app=\"QQ\"],.ap-app[data-app=\"短信\"],.ap-app[data-style=\"聊天\"]) .ap-legacy[data-sender=\"我\"] .ap-bubble,:is(.ap-app[data-app=\"微信\"],.ap-app[data-app=\"QQ\"],.ap-app[data-app=\"短信\"],.ap-app[data-style=\"聊天\"]) .ap-legacy[data-sender=\"自己\"] .ap-bubble{background:#fff7d4;border-radius:18px;border:1px solid #f0e1a8;box-shadow:0 3px 10px rgba(181,154,131,.08);color:#5c4738}.ap-app[data-app=\"微信\"] .ap-icon{background:#a9d19d;color:#fff}.ap-app[data-app=\"微信\"] .ap-icon::before{content:\"聊\";font-size:24px}.ap-app[data-app=\"QQ\"] .ap-icon{background:#9ebde6;color:#fff}.ap-app[data-app=\"QQ\"] .ap-icon::before{content:\"QQ\";font-size:21px;font-weight:700}.ap-app[data-app=\"小红书\"] .ap-icon{background:#df9898;color:#fff}.ap-app[data-app=\"小红书\"] .ap-icon::before{content:\"小红书\";font-size:12px;font-weight:650}.ap-app[data-app=\"浏览器\"] .ap-icon{background:#a3c5d6;color:#fff}.ap-app[data-app=\"浏览器\"] .ap-icon::before{content:\"◎\";font-size:39px}.ap-app[data-app=\"备忘录\"] .ap-icon{background:#dcc897;color:#fff}.ap-app[data-app=\"备忘录\"] .ap-icon::before{content:\"≡\";font-size:39px}.ap-app[data-app=\"相册\"] .ap-icon{background:#e3c6c9;color:#fff}.ap-app[data-app=\"相册\"] .ap-icon::before{content:\"✿\";font-size:35px}.ap-app[data-app=\"短信\"] .ap-icon{background:#aebd9c;color:#fff}.ap-app[data-app=\"短信\"] .ap-icon::before{content:\"…\";font-size:37px}.ap-app[data-app=\"电话\"] .ap-icon{background:#a6c5bc;color:#fff}.ap-app[data-app=\"电话\"] .ap-icon::before{content:\"☎\";font-size:31px}.ap-app[data-app=\"微信\"]{--app-caption:\"聊天 · 群聊 · 朋友圈\";--app-mark:\"聊\"}.ap-app[data-app=\"QQ\"]{--app-caption:\"消息 · 群聊 · 空间\";--app-mark:\"QQ\"}.ap-app[data-app=\"短信\"]{--app-caption:\"收件箱 · 短信记录\";--app-mark:\"…\"}:is(.ap-app[data-app=\"小红书\"],.ap-app[data-style=\"社区\"]){--app-caption:\"关注　发现　同城\";--app-mark:\"红\"}:is(.ap-app[data-app=\"小红书\"],.ap-app[data-style=\"社区\"]) .ap-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:9px}:is(.ap-app[data-app=\"小红书\"],.ap-app[data-style=\"社区\"]) .ap-item{display:flex;flex-direction:column;gap:0;margin:0;padding:0;border:1px solid #f0e1a8!important;border-radius:10px;overflow:hidden}:is(.ap-app[data-app=\"小红书\"],.ap-app[data-style=\"社区\"]) .ap-card-cover{display:block;width:100%;height:105px;background:#f5e6cd}:is(.ap-app[data-app=\"小红书\"],.ap-app[data-style=\"社区\"]) .ap-card-main{width:100%;padding:9px}.ap-app[data-app=\"浏览器\"]{--app-caption:\"搜索记录与浏览历史\";--app-mark:\"⌕\"}.ap-app[data-app=\"备忘录\"]{--app-caption:\"随手记录　私人笔记　待办\";--app-mark:\"≡\"}.ap-app[data-app=\"相册\"]{--app-caption:\"最近项目　收藏　相册\";--app-mark:\"✿\"}.ap-app[data-app=\"电话\"]{--app-caption:\"最近通话　联系人\";--app-mark:\"☎\"}</style>\n<details class=\"ap-fold\"><summary>手机系统展开</summary><div class=\"ap-phone\"><div class=\"ap-status\"><span class=\"ap-status-time\">$2</span><span class=\"ap-status-right\"><span class=\"ap-network\">$5</span><span class=\"ap-battery\">$4</span></span></div><div class=\"ap-stage\"><div class=\"ap-intro\"><div class=\"ap-date\">$3</div><div class=\"ap-clock\" data-time=\"$2\">$2</div><div class=\"ap-owner\">$1的手机</div></div><div class=\"ap-grid\">$7</div><div class=\"ap-wallpaper\"><span class=\"ap-wallpaper-label\">壁纸</span><span class=\"ap-wallpaper-text\">$6</span></div></div><div class=\"ap-homebar\"></div></div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  }
+]

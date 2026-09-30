@@ -1,0 +1,60 @@
+/* ============================================================
+   dark.css — 深色夜间模式
+   深灰底 + 高对比文字
+   ============================================================ */
+
+.theme-dark {
+  --app-bg: #1c1c1e;
+  --bar-color: #e8e8ea;
+  --bubble-in-bg: #2c2c2e;
+  --bubble-out-bg: #0a84ff;
+  --card-bg: #2c2c2e;
+  --chip-bg: #3a3a3c;
+  --chip-color: #d0d0d4;
+}
+
+.theme-dark .phone-shell__screen {
+  background: #1c1c1e;
+}
+
+.theme-dark .desktop {
+  background: linear-gradient(160deg, #2c2c2e, #1c1c1e) !important;
+}
+
+.theme-dark .desktop__icon-glyph {
+  background: #3a3a3c;
+}
+
+.theme-dark .desktop__icon-label,
+.theme-dark .desktop__statusbar,
+.theme-dark .wechat__name,
+.theme-dark .qq__name,
+.theme-dark .custom-app__heading {
+  color: #aeaeb2;
+}
+
+.theme-dark .bubble-in .bubble-content {
+  background: var(--bubble-in-bg);
+  color: #f2f2f5;
+}
+.theme-dark .bubble-out .bubble-content {
+  background: var(--bubble-out-bg);
+  color: #fff;
+}
+
+.theme-dark .bubble-time,
+.theme-dark .bubble-sender,
+.theme-dark .rednote__card-meta,
+.theme-dark .custom-app__meta {
+  color: #8e8e93;
+}
+
+.theme-dark .rednote__card,
+.theme-dark .custom-app__entry {
+  background: var(--card-bg);
+  color: #f2f2f5;
+}
+
+.theme-dark .app-window__bar {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}

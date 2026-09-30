@@ -1,0 +1,30 @@
+/* ============================================================
+   milk.css — 奶黄牛奶风（默认主题）
+   暖米黄 + 奶油白，柔和漫射感
+   ============================================================ */
+
+.theme-milk {
+  --app-bg: #f6f1e7;
+  --bar-color: #5b4a3a;
+  --bubble-in-bg: #fffdf8;
+  --bubble-out-bg: #ffe3b3;
+  --card-bg: #fffdf8;
+  --chip-bg: #f0e2c8;
+  --chip-color: #8a6d3b;
+}
+
+.theme-milk .phone-shell__screen {
+  background: #f6f1e7;
+}
+
+.theme-milk .desktop {
+  background: linear-gradient(160deg, #fbeed3, #f3d9ae) !important;
+}
+
+/* 微信/QQ 气泡在奶黄主题下的暖色覆盖 */
+.theme-milk .bubble-in .bubble-content {
+  background: var(--bubble-in-bg);
+}
+.theme-milk .bubble-out .bubble-content {
+  background: var(--bubble-out-bg);
+}

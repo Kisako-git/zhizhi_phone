@@ -1,0 +1,67 @@
+##角色手机
+在每次正文结束后，必须生成<手机>
+
+[Character Phone]
+
+Generate the current character's phone from the story and character settings. Strictly preserve the story timeline and established events.
+
+Present the text the character would actually leave on their phone, preserving their immediate emotions and spontaneous wording. Private records should feel written for their own eyes. Let interest emerge from specific everyday circumstances.
+
+NSFW content should be direct, explicit, vivid, and engaging. Integrate it naturally through searches, sex logs, etc. Express desires in the character's own words.
+
+Only when the content contains foreign language characters, the generated content needs to be presented in bilingual form (Chinese and the corresponding foreign language), with Chinese text first, followed by the foreign language translation.
+[Structure]
+
+Include 8 fixed apps and 2 custom apps (10 total). Each app has 2–4 sections, each containing 3–6 entries.
+
+[Entry Formats]
+
+For conversations in 微信, QQ, and 短信, group messages by contact or group name and add 类型="聊天". Present natural exchanges chronologically. Directions are relative to the phone owner: use 方向="发出" for the owner and 方向="收到" for others. Identify each actual speaker in group chats. Notifications may contain incoming messages only.
+
+**For chat messages, you MUST select an appropriate URL from the [Avatar Library] and add it to the 头像 attribute.**
+**For stickers or emojis (表情包), insert an appropriate URL from the [Sticker Library] as an HTML img tag directly along with the chat message text.**
+
+<栏目 名称="Contact name" 类型="聊天">
+<条目 方向="收到" 发送者="Contact name" 头像="SELECTED_AVATAR_URL" 时间="Message time">Original message <img src="SELECTED_STICKER_URL" style="width:120px;"></条目>
+<条目 方向="发出" 发送者="Phone owner" 头像="SELECTED_AVATAR_URL" 时间="Message time"><img src="SELECTED_STICKER_URL" style="width:120px;"> Reply message</条目>
+</栏目>
+
+Use 类型="动态" for feeds such as WeChat Moments and Qzone. Format other entries according to their actual function. Include applicable attributes and omit unused ones:
+
+<条目 标题="Title" 副文="Time, source, or relevant metadata" 标记="Price, tag, or relevant label">Entry content</条目>
+
+Tasks may use 状态="待办" or 状态="完成". Calls may use 状态="已接", 状态="已拨", or 状态="未接". Photo entries describe the image or screenshot.
+
+APP blocks 09 and 10 must include a 界面 attribute matching their primary function. Choose one of: 音乐／购物／任务／阅读／社区／社交／视频／游戏／工具. For example, 闲鱼 uses 界面="购物".
+
+[Output]
+
+Generate phone content in Chinese. Output one complete raw <手机> block, without Markdown fences, explanations, or styling code. Preserve the tag names and order below. Use double quotes for attributes and <br> for line breaks within content.
+
+The template shows structure only. Replace every placeholder and expand all ten APP blocks with the required section and entry counts. Use the message format above for chats, add 界面 to custom apps, and close every tag.
+
+<手机>
+<角色>Current character name</角色>
+<时间>Current story time</时间>
+<日期>Full story date</日期>
+<电量>Battery percentage</电量>
+<网络>Network status</网络>
+<壁纸>Current wallpaper description</壁纸>
+<桌面>
+<应用 编号="01" 未读="0">微信</应用>
+<应用 编号="02" 未读="0">QQ</应用>
+<应用 编号="03" 未读="0">小红书</应用>
+<应用 编号="04" 未读="0">浏览器</应用>
+<应用 编号="05" 未读="0">备忘录</应用>
+<应用 编号="06" 未读="0">相册</应用>
+<应用 编号="07" 未读="0">短信</应用>
+<应用 编号="08" 未读="0">电话</应用>
+<应用 编号="09" 未读="0">Custom app 1</应用>
+<应用 编号="10" 未读="0">Custom app 2</应用>
+</桌面>
+<APP 编号="Matching ID" 名称="Matching app name">
+<栏目 名称="Section name">
+<条目 标题="Applicable title">Entry content</条目>
+</栏目>
+</APP>
+</手机>

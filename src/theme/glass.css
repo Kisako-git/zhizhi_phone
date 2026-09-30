@@ -1,0 +1,51 @@
+/* ============================================================
+   glass.css — 玻璃拟态风（Glassmorphism）
+   半透明毛玻璃 + 背景模糊
+   ============================================================ */
+
+.theme-glass {
+  --app-bg: rgba(255, 255, 255, 0.18);
+  --bar-color: #ffffff;
+  --bubble-in-bg: rgba(255, 255, 255, 0.55);
+  --bubble-out-bg: rgba(120, 180, 255, 0.55);
+  --card-bg: rgba(255, 255, 255, 0.35);
+  --chip-bg: rgba(255, 255, 255, 0.4);
+  --chip-color: #2a4a7a;
+}
+
+.theme-glass .phone-shell__screen {
+  background: linear-gradient(150deg, #a1c4fd, #c2e9fb, #fbc2eb);
+}
+
+.theme-glass .desktop {
+  background: transparent !important;
+}
+
+.theme-glass .desktop__icon-glyph {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.theme-glass .app-window__content,
+.theme-glass .rednote__card,
+.theme-glass .custom-app__entry {
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.theme-glass .bubble-in .bubble-content {
+  background: var(--bubble-in-bg);
+  backdrop-filter: blur(8px);
+}
+.theme-glass .bubble-out .bubble-content {
+  background: var(--bubble-out-bg);
+  backdrop-filter: blur(8px);
+}
+
+.theme-glass .desktop__icon-label,
+.theme-glass .desktop__statusbar {
+  color: #1f3555;
+}

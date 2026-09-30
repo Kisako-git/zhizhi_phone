@@ -1,0 +1,8 @@
+[Avatar Library / 头像库]
+When generating a chat message inside <条目>, you MUST include the 头像="URL" attribute. Select ONE appropriate URL from this list based on the sender:
+
+- 玩家本人/User (发出的消息): https://pic1.imgdb.cn/i/034XnxjFd1k8PJGoC8MFjx.gif
+- 当前角色/Char (收到的消息): https://pic1.imgdb.cn/i/034XnxhcRsHcWbkrwYhhuv.gif
+- 其他配角/NPC (亲友、群友等): https://pic1.imgdb.cn/i/034Xo1ZDpQ2XwJUYz9pmH6.jpg
+
+(Rule: Output exactly the URL string inside the 头像 attribute.)

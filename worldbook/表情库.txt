@@ -1,0 +1,98 @@
+[Sticker Library / 表情包库]
+When a character uses a sticker (表情包) in a chat message, insert the HTML tag directly into the message text like this: <img src="URL" style="width:120px;">. You MUST select ONE URL from this list matching the current emotion:
+
+- 超委屈: https://iili.io/n90mgpa.gif
+- 雀跃: https://iili.io/CycsQ1t.gif
+- 超期待: https://iili.io/CpdIyGt.gif
+- 喜欢你: https://iili.io/CpEJyps.gif
+- 心动了: https://iili.io/Cpdk9iN.gif
+- 超开心！: https://iili.io/CpRTBGp.gif
+
+去死吧傻逼：https://iili.io/CycW2hQ.jpg
+我对您的淫乱之心天地可鉴：https://i.postimg.cc/m2TByD70/IMG-8495.jpg
+除了帅一无是处：https://i.postimg.cc/MKzqmTyx/IMG-8496.jpg
+走开啊傻逼：https://i.postimg.cc/bNqp9JQp/IMG-8497.jpg
+摸狗头;https://i.postimg.cc/9FcCYMGW/IMG-8498.jpg
+我叫狗咬你：https://i.postimg.cc/m2TByDQZ/IMG-8499.jpg
+我去你妈的吧：https://i.postimg.cc/sD3s4XpD/IMG-8500.jpg
+呜呜主人狗会听话：https://i.postimg.cc/ncnpGzvr/IMG-8501.jpg
+我是农民：https://i.postimg.cc/VLzmW6jJ/IMG-8502.jpg
+泪目了：https://i.postimg.cc/ncnpGzvj/IMG-8503.jpg
+一群傻吊：https://i.postimg.cc/9FcCYMG9/IMG-8504.jpg
+我的心好疼：https://i.postimg.cc/28Cr764n/IMG-8505.jpg
+突然卖萌：https://i.postimg.cc/pXkxGHZh/IMG-8506.jpg
+你是头猪：https://i.postimg.cc/c4TZ9SmY/IMG-8507.jpg
+我放学打你：https://i.postimg.cc/4NwZLg56/IMG-8508.jpg
+盘它：https://i.postimg.cc/15MPCQHY/IMG-8509.jpg
+欺负我你能得到什么：https://i.postimg.cc/fT5Z2NK8/IMG-8510.jpg
+我拉屎给你吃：https://i.postimg.cc/WbSjWvnC/IMG-8511.jpg
+打王者跪了：https://i.postimg.cc/8z5Gx0KK/IMG-8513.jpg
+给大佬递茶：https://i.postimg.cc/fRLs1r2B/IMG-8514.jpg
+老子想打你：https://i.postimg.cc/Vk6w2VGh/IMG-8515.jpg
+我哭了啊：https://i.postimg.cc/3xRhzcSc/IMG-8516.jpg
+一群逗逼：https://i.postimg.cc/bwJP4BVP/IMG-8517.jpg
+。。老子。。：https://i.postimg.cc/Sxs4HvTB/IMG-8518.jpg
+我是傻子：https://i.postimg.cc/fRLs1rqN/IMG-8519.jpg
+看戏看戏：https://i.postimg.cc/x1CQB4pY/IMG-8520.jpg
+救我救我：https://i.postimg.cc/g2Jp1Ttz/IMG-8521.jpg
+无语：https://i.postimg.cc/Jzn8S2Y1/IMG-8522.jpg
+笑死：https://i.postimg.cc/W13VxHYp/IMG-8523.jpg
+我去有妹子:https://i.postimg.cc/cLbWWBPN/IMG-8524.jpg
+耶比耶比：https://i.postimg.cc/Hkhmm9Fd/IMG-8525.jpg
+舔你：https://i.postimg.cc/3xchhFzT/IMG-8526.jpg
+傻子流口水：https://i.postimg.cc/XYzWWktj/IMG-8527.jpg
+痴呆儿：https://i.postimg.cc/T34xxJBw/IMG-8528.jpg
+我特么服了：https://i.postimg.cc/pL6vvJ3X/IMG-8529.jpg
+卧槽没钱了：https://i.postimg.cc/QdyDDJvB/IMG-8530.jpg
+…有病？：https://i.postimg.cc/qv5rrxWg/IMG-8531.jpg
+流鼻涕：https://i.postimg.cc/3xchhFzD/IMG-8532.jpg
+我对这个世界好绝望：https://i.postimg.cc/CxQ00s9k/IMG-8533.jpg
+帅逼醉了：https://i.postimg.cc/R0JBZnzJ/IMG-8534.jpg
+猥琐抠鼻：https://i.postimg.cc/Lsgp8ZMB/IMG-8535.jpg
+猥琐看你：https://i.postimg.cc/hGQBt7q8/IMG-8536.jpg
+萌萌的我：https://i.postimg.cc/3w0TxDHg/IMG-8537.jpg
+哭得很大声：https://i.postimg.cc/BvP0n1Gg/IMG-8538.jpg
+嘟嘴：https://i.postimg.cc/pd5HLntk/IMG-8539.jpg？
+懵逼/疑惑：https://i.postimg.cc/7LJkZTy9/IMG-8540.jpg
+死了算了：https://i.postimg.cc/q76TvCdb/IMG-8541.jpg
+锤你：https://i.postimg.cc/nL9JhQJf/IMG-8542.jpg
+鼻涕喷你：https://i.postimg.cc/MTk8MK6J/IMG-8543.jpg
+装逼坐姿：https://i.postimg.cc/ydqzgYVb/IMG-8544.jpg
+打死你个坏男人：https://i.postimg.cc/HxQ1QDnp/IMG-8545.jpg
+我跟你拼了：https://i.postimg.cc/j5zYz025/IMG-8547.jpg
+卧槽求放过：https://i.postimg.cc/PxGkprXP/IMG-8548.jpg
+报意思啊：https://i.postimg.cc/50wWwdyN/IMG-8549.jpg
+呜呜呜你干啥啊：https://i.postimg.cc/fLxQxnyb/IMG-8550.jpg
+……无语/沉默：https://i.postimg.cc/3RgQg5Nd/IMG-8551.jpg
+笑哭：https://i.postimg.cc/1tp1phX8/IMG-8552.jpg
+求放过：https://i.postimg.cc/V6jPjQvr/IMG-8553.jpg
+？？？懵逼/问号：https://i.postimg.cc/mDQWQfkF/IMG-8554.jpg
+猥琐：https://i.postimg.cc/DZq3qk04/IMG-8555.jpg
+苦涩沧桑：https://i.postimg.cc/HxQ1QDny/IMG-8556.jpg
+你下贱：https://i.postimg.cc/76grg8h0/IMG-8557.jpg
+死不了啦啦啦：https://i.postimg.cc/cHQGQyCR/IMG-8558.jpg
+…命好苦：https://i.postimg.cc/ydFCF4xh/IMG-8559.jpg
+哼…：https://i.postimg.cc/xCKVKD83/IMG-8560.jpg
+扇死你：https://i.postimg.cc/9MGHG50t/IMG-8561.jpg
+？？？？？？疑惑：https://i.postimg.cc/B6xfx9bC/IMG-8562.jpg
+再让我上学我立马去死：https://i.postimg.cc/9MGHG50J/IMG-8563.jpg
+肥宅呆了：https://i.postimg.cc/Y0MKRnLf/IMG-8564.jpg
+肥宅偷笑：https://i.postimg.cc/tJpQkSnk/IMG-8565.jpg
+肥宅大哭：https://i.postimg.cc/8PkgrYSf/IMG-8592.gif
+我懵逼了：https://i.postimg.cc/Rh45dsJj/IMG-8566.jpg卧槽尼玛啊：https://i.postimg.cc/vTbFhq6y/IMG-8567.jpg
+我丢。。。：https://i.postimg.cc/cChqbRQq/IMG-8568.jpg
+B世界求放过：https://i.postimg.cc/8c480RLx/IMG-8569.jpg
+陶醉：https://i.postimg.cc/6qcsmrCk/IMG-8570.jpg
+窒息：https://i.postimg.cc/qqwf5s8d/IMG-8571.jpg
+我哭了。：https://i.postimg.cc/gjs9TVvJ/IMG-8572.jpg
+绝望：https://i.postimg.cc/hvsF5L9G/IMG-8574.jpg
+好懵逼好呆萌：https://i.postimg.cc/kGsrpQx6/IMG-8575.jpg
+我是弱智：https://i.postimg.cc/HnzGhwQM/IMG-8576.jpg
+你别装逼了：https://i.postimg.cc/nVGtrJN2/IMG-8577.jpg
+凤雏：https://i.postimg.cc/sf4RxrbK/IMG-8578-(1).jpg
+卧龙：https://i.postimg.cc/fWfhyN1g/IMG-8579.jpg
+请主人尽情吩咐小狗：https://i.postimg.cc/wxQdMpnn/IMG-8580.jpg
+我好柔弱啊：https://i.postimg.cc/VsWcv83N/IMG-8581.jpg
+委屈：https://i.postimg.cc/2j7fyDPD/IMG-8582.jpg
+
+(Rule: Only use the URLs provided above for stickers, and mix them naturally within the chat entries.)

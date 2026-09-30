@@ -1,0 +1,35 @@
+/* ============================================================
+   base.css — 全局重置与外壳排版
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei',
+    'Segoe UI', Roboto, sans-serif;
+  background: #d9cfc2;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* #app 居中放置手机 */
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+button {
+  font-family: inherit;
+}
