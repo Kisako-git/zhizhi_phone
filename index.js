@@ -64,7 +64,7 @@ console.log("🐭 吱吱小手机启动");
     */
 
     const BASE_URL =
-    "https://cdn.jsdelivr.net/gh/Kisako-git/zhizhi_phone@6f88d76d2eaa204ee479e1d629515a01ff298507/";
+    "https://cdn.jsdelivr.net/gh/Kisako-git/zhizhi_phone@362d371/";
 
 
 
