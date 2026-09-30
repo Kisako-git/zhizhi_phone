@@ -1,16 +1,19 @@
 /**
- * 吱吱小手机
- * Kisako-git/zhizhi_phone
- * commit: 6f88d76d2eaa204ee479e1d629515a01ff298507
+ * 🐭 吱吱小手机
+ * GitHub: Kisako-git/zhizhi_phone
+ * Version: 0b2bf61
  */
+
 
 console.log("🐭 吱吱小手机启动");
 
 
-(function(){
+(function () {
 
-    // 防止重复加载
-    if(window.ZhizhiPhoneLoaded){
+
+    // 防重复加载
+
+    if (window.ZhizhiPhoneLoaded) {
 
         console.log(
             "🐭 吱吱小手机已经加载"
@@ -21,7 +24,7 @@ console.log("🐭 吱吱小手机启动");
     }
 
 
-    window.ZhizhiPhoneLoaded=true;
+    window.ZhizhiPhoneLoaded = true;
 
 
 
@@ -29,21 +32,28 @@ console.log("🐭 吱吱小手机启动");
         创建挂载容器
     */
 
+
     let root =
-    document.querySelector(
-        "#zhizhi-phone-root"
-    );
-
-
-    if(!root){
-
-        root=document.createElement(
-            "div"
+        document.querySelector(
+            "#zhizhi-phone-root"
         );
 
 
-        root.id=
-        "zhizhi-phone-root";
+    if (!root) {
+
+
+        root =
+            document.createElement(
+                "div"
+            );
+
+
+        root.id =
+            "zhizhi-phone-root";
+
+
+        root.style.position =
+            "relative";
 
 
         document.body.appendChild(
@@ -55,16 +65,20 @@ console.log("🐭 吱吱小手机启动");
             "🐭 创建手机挂载容器"
         );
 
+
     }
 
 
 
     /*
-        CDN 地址
+        固定 GitHub commit
     */
 
+
     const BASE_URL =
-    "https://cdn.jsdelivr.net/gh/Kisako-git/zhizhi_phone@362d371/";
+
+    "https://cdn.jsdelivr.net/gh/Kisako-git/zhizhi_phone@0b2bf61/";
+
 
 
 
@@ -72,33 +86,43 @@ console.log("🐭 吱吱小手机启动");
         加载 CSS
     */
 
+
     function loadCSS(url){
 
-        if(
+
+        const old =
             document.querySelector(
-                `link[href="${url}"]`
-            )
-        ){
+                'link[data-zhizhi-css]'
+            );
+
+
+        if(old){
 
             return;
 
         }
 
 
+
         const link =
-        document.createElement(
-            "link"
-        );
+            document.createElement(
+                "link"
+            );
 
 
         link.rel =
-        "stylesheet";
+            "stylesheet";
+
+
+        link.dataset.zhizhiCss =
+            "true";
 
 
         link.href =
-        url +
-        "?t=" +
-        Date.now();
+            url +
+            "?t=" +
+            Date.now();
+
 
 
         document.head.appendChild(
@@ -110,13 +134,16 @@ console.log("🐭 吱吱小手机启动");
             "🐭 CSS加载完成"
         );
 
+
     }
 
 
 
+
     /*
-        加载 Vue bundle
+        加载 Vue 主程序
     */
+
 
     async function loadCore(){
 
@@ -125,40 +152,56 @@ console.log("🐭 吱吱小手机启动");
 
 
             loadCSS(
-                BASE_URL+
+
+                BASE_URL +
+
                 "dist/assets/index-BkuzUcB6.css"
+
             );
 
 
 
             await import(
-                BASE_URL+
-                "dist/assets/index-segi5e_G.js?t="
-                +
+
+                BASE_URL +
+
+                "dist/assets/index-DCCUo-0z.js?t=" +
+
                 Date.now()
+
             );
 
 
 
             console.log(
+
                 "🐭 吱吱核心加载完成"
+
             );
 
 
 
-        }catch(e){
+        }
+
+        catch(err){
 
 
             console.error(
+
                 "🐭 吱吱核心加载失败:",
-                e
+
+                err
+
             );
+
 
 
             if(window.toastr){
 
                 toastr.error(
+
                     "吱吱手机核心加载失败"
+
                 );
 
             }
@@ -166,7 +209,9 @@ console.log("🐭 吱吱小手机启动");
 
         }
 
+
     }
+
 
 
 
