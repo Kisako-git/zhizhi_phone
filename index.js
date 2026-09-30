@@ -39,7 +39,7 @@ if(!root){
 // CSS
 
 const BASE_URL =
-"https://cdn.jsdelivr.net/gh/Kisako-git/zhizhi_phone@f7ca7f4/";
+"https://cdn.jsdelivr.net/gh/Kisako-git/zhizhi_phone@CB58D45/";
 
 
 const css=document.createElement("link");
@@ -59,7 +59,7 @@ document.head.appendChild(css);
 
 import(
 BASE_URL+
-"dist/assets/index-segi5e_G.js"
+"dist/assets/index-DCCUo-0z.js"
 )
 .then(()=>{
 
