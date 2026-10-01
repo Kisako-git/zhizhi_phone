@@ -1,273 +1,276 @@
-/**
- * 🐭 吱吱小手机
- * GitHub: Kisako-git/zhizhi_phone
- *
- * 功能：
- * 1. 自动创建独立挂载容器
- * 2. 自动查询 dist/assets
- * 3. 自动寻找最新的 index-*.js
- * 4. 自动寻找最新的 index-*.css
- * 5. Vite 每次 build 后不需要手动修改文件名
- * 6. 自动添加时间戳，尽量避免 CDN 缓存
- */
+// ============================================================
+// 🐭 吱吱小手机 - 自动加载器
+// 自动读取 dist/index.html
+// 自动获取 Vite 最新生成的 JS / CSS
+// 不需要手动修改 hash
+// ============================================================
 
-(async function () {
-
-    console.log("🐭 吱吱小手机启动");
-
-
-    // =========================================================
-    // 防止重复加载
-    // =========================================================
-
-    if (window.ZhizhiPhoneLoaded) {
-
-        console.log("🐭 吱吱小手机已经加载");
-
-        return;
-
-    }
-
-    window.ZhizhiPhoneLoaded = true;
-
-
-    // =========================================================
-    // 基础地址
-    // =========================================================
+(function () {
+    "use strict";
 
     const USER = "Kisako-git";
-
     const REPO = "zhizhi_phone";
-
     const BRANCH = "main";
 
-
-    const CDN_BASE =
+    const BASE_URL =
         `https://cdn.jsdelivr.net/gh/${USER}/${REPO}@${BRANCH}/`;
 
+    console.log("🐭 吱吱小手机启动");
+    console.log("🐭 CDN:", BASE_URL);
 
 
-    const API_URL =
-        `https://data.jsdelivr.com/v1/packages/gh/${USER}/${REPO}@${BRANCH}?structure=flat`;
+    // ============================================================
+    // 创建手机挂载容器
+    // ============================================================
+
+    function createRoot() {
+
+        let root = document.querySelector("#zhizhi-phone-root");
+
+        if (!root) {
+
+            root = document.createElement("div");
+
+            root.id = "zhizhi-phone-root";
+
+            root.style.position = "fixed";
+            root.style.zIndex = "999999";
+            root.style.pointerEvents = "none";
+
+            document.body.appendChild(root);
+
+            console.log("🐭 #zhizhi-phone-root 创建完成");
+        }
+
+        return root;
+    }
 
 
+    // ============================================================
+    // 加载 CSS
+    // ============================================================
 
-    // =========================================================
-    // 创建独立挂载容器
-    // =========================================================
+    function loadCSS(url) {
 
-    let root =
-        document.querySelector("#zhizhi-phone-root");
+        return new Promise((resolve, reject) => {
 
+            // 防止重复加载
+            const old = document.querySelector(
+                `link[data-zhizhi-phone-css="${url}"]`
+            );
 
-    if (!root) {
+            if (old) {
 
-        root =
-            document.createElement("div");
+                console.log("🐭 CSS 已经加载过");
 
+                resolve();
 
-        root.id =
-            "zhizhi-phone-root";
-
-
-        /*
-         * 不使用 position: fixed
-         * 避免干扰手机自身 CSS
-         */
-
-        root.style.position =
-            "relative";
-
-        root.style.zIndex =
-            "999999";
+                return;
+            }
 
 
-        document.body.appendChild(root);
+            const link = document.createElement("link");
+
+            link.rel = "stylesheet";
+
+            link.href =
+                url +
+                (url.includes("?") ? "&" : "?") +
+                "zhizhi=" +
+                Date.now();
+
+            link.dataset.zhizhiPhoneCss = url;
 
 
-        console.log(
-            "🐭 手机挂载容器创建完成"
-        );
+            link.onload = () => {
+
+                console.log("🐭 CSS加载完成");
+
+                resolve();
+
+            };
+
+
+            link.onerror = () => {
+
+                console.error(
+                    "❌ CSS加载失败:",
+                    link.href
+                );
+
+                reject(
+                    new Error(
+                        "CSS加载失败: " +
+                        link.href
+                    )
+                );
+
+            };
+
+
+            document.head.appendChild(link);
+
+        });
 
     }
 
 
+    // ============================================================
+    // 获取 Vite 的 dist/index.html
+    // ============================================================
 
-    // =========================================================
-    // 获取 dist/assets 文件列表
-    // =========================================================
-
-    async function getAssets() {
-
-        console.log(
-            "🐭 正在读取 dist/assets..."
-        );
-
+    async function getDistHTML() {
 
         const url =
-            API_URL +
-            "&t=" +
+            BASE_URL +
+            "dist/index.html?zhizhi=" +
             Date.now();
 
 
-        const response =
-            await fetch(url, {
+        console.log(
+            "🐭 正在读取:",
+            url
+        );
+
+
+        const response = await fetch(
+            url,
+            {
                 cache: "no-store"
-            });
+            }
+        );
 
 
         if (!response.ok) {
 
             throw new Error(
-                `jsDelivr API 请求失败: HTTP ${response.status}`
+                `无法读取 dist/index.html (${response.status})`
             );
 
         }
 
 
-        const data =
-            await response.json();
-
-
-        /*
-         * jsDelivr API 的 files 可能是：
-         *
-         * [
-         *   { name: "dist/assets/index-xxx.js" },
-         *   ...
-         * ]
-         *
-         * 也可能返回字符串路径。
-         *
-         * 这里两种都兼容。
-         */
-
-        let files = [];
-
-
-        if (Array.isArray(data)) {
-
-            files = data;
-
-        }
-        else if (Array.isArray(data.files)) {
-
-            files = data.files;
-
-        }
-        else if (Array.isArray(data.files?.files)) {
-
-            files = data.files.files;
-
-        }
-
-
-        files =
-            files
-                .map(item => {
-
-                    if (typeof item === "string") {
-
-                        return item;
-
-                    }
-
-                    if (item && typeof item.name === "string") {
-
-                        return item.name;
-
-                    }
-
-                    return null;
-
-                })
-                .filter(Boolean);
-
+        const html = await response.text();
 
 
         console.log(
-            "🐭 jsDelivr 文件数量:",
-            files.length
+            "🐭 dist/index.html 读取成功"
         );
 
 
-        return files;
+        return html;
 
     }
 
 
+    // ============================================================
+    // 从 Vite index.html 自动找 JS / CSS
+    // ============================================================
 
-    // =========================================================
-    // 自动寻找 Vite 入口 JS / CSS
-    // =========================================================
-
-    function findEntryFiles(files) {
-
-
-        const assetFiles =
-            files.filter(file =>
-                file.startsWith("dist/assets/")
-            );
-
+    function findEntryFiles(html) {
 
         console.log(
-            "🐭 dist/assets:",
-            assetFiles
+            "🐭 正在分析 Vite index.html"
         );
 
 
-        /*
-         * Vite 默认入口通常是：
-         *
-         * dist/assets/index-xxxxx.js
-         *
-         * dist/assets/index-xxxxx.css
-         */
+        // --------------------------------------------------------
+        // JS
+        // --------------------------------------------------------
+
+        const jsMatches = [
+            ...html.matchAll(
+                /(?:src=["'])([^"']+\.js)(?:["'])/gi
+            )
+        ];
 
 
-        const jsFiles =
-            assetFiles.filter(file =>
-                /^dist\/assets\/index-[^/]+\.js$/i.test(file)
-            );
+        // --------------------------------------------------------
+        // CSS
+        // --------------------------------------------------------
+
+        const cssMatches = [
+            ...html.matchAll(
+                /(?:href=["'])([^"']+\.css)(?:["'])/gi
+            )
+        ];
 
 
-        const cssFiles =
-            assetFiles.filter(file =>
-                /^dist\/assets\/index-[^/]+\.css$/i.test(file)
-            );
+        console.log(
+            "🐭 HTML中的JS:",
+            jsMatches.map(x => x[1])
+        );
 
 
-        if (!jsFiles.length) {
+        console.log(
+            "🐭 HTML中的CSS:",
+            cssMatches.map(x => x[1])
+        );
+
+
+        // ========================================================
+        // 找 Vite 的 index-xxxxx.js
+        // ========================================================
+
+        let jsFile = null;
+
+        for (const match of jsMatches) {
+
+            const file = match[1];
+
+            if (
+                /(?:^|\/)index-[^/]+\.js$/i.test(file)
+            ) {
+
+                jsFile = file;
+
+                break;
+            }
+
+        }
+
+
+        // ========================================================
+        // 找 Vite 的 index-xxxxx.css
+        // ========================================================
+
+        let cssFile = null;
+
+        for (const match of cssMatches) {
+
+            const file = match[1];
+
+            if (
+                /(?:^|\/)index-[^/]+\.css$/i.test(file)
+            ) {
+
+                cssFile = file;
+
+                break;
+            }
+
+        }
+
+
+        if (!jsFile) {
 
             throw new Error(
-                "没有找到 dist/assets/index-*.js"
+                "dist/index.html 中没有找到 Vite index-*.js"
             );
 
         }
 
 
-        if (!cssFiles.length) {
-
-            throw new Error(
-                "没有找到 dist/assets/index-*.css"
-            );
-
-        }
+        console.log(
+            "🐭 找到 JS:",
+            jsFile
+        );
 
 
-        /*
-         * 正常情况下每次 build 只有一个 index-*.js
-         * 和一个 index-*.css。
-         *
-         * 如果有多个，则取最后一个。
-         */
-
-        const jsFile =
-            jsFiles[jsFiles.length - 1];
-
-
-        const cssFile =
-            cssFiles[cssFiles.length - 1];
+        console.log(
+            "🐭 找到 CSS:",
+            cssFile
+        );
 
 
         return {
@@ -278,149 +281,139 @@
     }
 
 
+    // ============================================================
+    // 规范化路径
+    // ============================================================
 
-    // =========================================================
-    // 加载 CSS
-    // =========================================================
+    function normalizeDistPath(file) {
 
-    function loadCSS(url) {
+        file = file.replace(/^\/+/, "");
 
+        // Vite 默认可能生成：
+        //
+        // /assets/index-xxx.js
+        //
+        // 我们实际需要：
+        //
+        // dist/assets/index-xxx.js
 
-        /*
-         * 防止重复插入
-         */
+        if (file.startsWith("assets/")) {
 
-        const old =
-            document.querySelector(
-                'link[data-zhizhi-phone-css="true"]'
-            );
-
-
-        if (old) {
-
-            old.remove();
+            return "dist/" + file;
 
         }
 
 
-        const link =
-            document.createElement("link");
+        if (file.startsWith("dist/")) {
+
+            return file;
+
+        }
 
 
-        link.rel =
-            "stylesheet";
-
-
-        link.dataset.zhizhiPhoneCss =
-            "true";
-
-
-        link.href =
-            url +
-            "?zhizhi=" +
-            Date.now();
-
-
-        document.head.appendChild(link);
-
-
-        console.log(
-            "🐭 CSS 加载完成:",
-            link.href
-        );
+        return "dist/" + file;
 
     }
 
 
-
-    // =========================================================
-    // 加载 Vue 主程序
-    // =========================================================
+    // ============================================================
+    // 加载核心
+    // ============================================================
 
     async function loadCore() {
 
-
         try {
 
+            createRoot();
 
-            // -------------------------------------------------
-            // 读取 GitHub / jsDelivr 文件列表
-            // -------------------------------------------------
+
+            // ----------------------------------------------------
+            // 读取 dist/index.html
+            // ----------------------------------------------------
+
+            const html =
+                await getDistHTML();
+
+
+            // ----------------------------------------------------
+            // 找当前 Vite hash
+            // ----------------------------------------------------
 
             const files =
-                await getAssets();
+                findEntryFiles(html);
 
 
-            // -------------------------------------------------
-            // 自动找到当前 Vite build 文件
-            // -------------------------------------------------
-
-            const {
-                jsFile,
-                cssFile
-            } =
-                findEntryFiles(files);
+            const jsPath =
+                normalizeDistPath(
+                    files.jsFile
+                );
 
 
-            console.log(
-                "🐭 自动找到 CSS:",
-                cssFile
-            );
+            const cssPath =
+                files.cssFile
+                    ? normalizeDistPath(
+                        files.cssFile
+                    )
+                    : null;
 
-
-            console.log(
-                "🐭 自动找到 JS:",
-                jsFile
-            );
-
-
-            // -------------------------------------------------
-            // 加载 CSS
-            // -------------------------------------------------
-
-            loadCSS(
-                CDN_BASE +
-                cssFile
-            );
-
-
-            // -------------------------------------------------
-            // 加载 JS
-            // -------------------------------------------------
 
             const jsURL =
-                CDN_BASE +
-                jsFile +
-                "?zhizhi=" +
-                Date.now();
+                BASE_URL +
+                jsPath;
+
+
+            const cssURL =
+                cssPath
+                    ? BASE_URL +
+                      cssPath
+                    : null;
 
 
             console.log(
-                "🐭 正在加载核心:",
+                "🐭 最终 JS:",
                 jsURL
             );
 
 
-            await import(jsURL);
-
-
             console.log(
-                "✅ 吱吱小手机核心加载成功"
+                "🐭 最终 CSS:",
+                cssURL
             );
 
 
-            if (window.toastr) {
+            // ----------------------------------------------------
+            // CSS
+            // ----------------------------------------------------
 
-                toastr.success(
-                    "吱吱小手机加载成功"
-                );
+            if (cssURL) {
+
+                await loadCSS(cssURL);
 
             }
 
 
-        }
-        catch (error) {
+            // ----------------------------------------------------
+            // JS
+            // ----------------------------------------------------
 
+            console.log(
+                "🐭 开始加载核心 JS"
+            );
+
+
+            await import(
+                jsURL +
+                "?zhizhi=" +
+                Date.now()
+            );
+
+
+            console.log(
+                "✅ 吱吱小手机加载成功"
+            );
+
+
+        } catch (error) {
 
             console.error(
                 "❌ 吱吱小手机加载失败:",
@@ -428,7 +421,10 @@
             );
 
 
-            if (window.toastr) {
+            if (
+                typeof toastr !== "undefined" &&
+                toastr.error
+            ) {
 
                 toastr.error(
                     "吱吱小手机加载失败，请查看控制台"
@@ -441,12 +437,10 @@
     }
 
 
-
-    // =========================================================
+    // ============================================================
     // 启动
-    // =========================================================
+    // ============================================================
 
-    await loadCore();
-
+    loadCore();
 
 })();
